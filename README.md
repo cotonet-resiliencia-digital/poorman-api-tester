@@ -34,7 +34,7 @@ Built with **PHP** and **Vanilla JS**, it runs locally on your machine and uses 
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/poorman-api-tester.git](https://github.com/YOUR_USERNAME/poorman-api-tester.git)
+    git clone [https://github.com/cotonet-resiliencia-digital/poorman-api-tester.git](https://github.com/cotonet-resiliencia-digital/poorman-api-tester.git)
     cd poorman-api-tester
     ```
 

@@ -3,6 +3,7 @@
 
 # Ficheiros de Cache do Fat-Free
 /tmp/
+public_html/tmp/
 
 # Ficheiros de Sistema e IDEs
 .DS_Store
