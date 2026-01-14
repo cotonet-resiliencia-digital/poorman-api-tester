@@ -1,0 +1,14 @@
+# Dependências do Composer (Nunca enviar isto!)
+/vendor/
+
+# Ficheiros de Cache do Fat-Free
+/tmp/
+
+# Ficheiros de Sistema e IDEs
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs (se houver)
+*.log
