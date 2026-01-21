@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 
 $f3 = \Base::instance();
 
-$f3->set('APP_VERSION', '1.0.0');
+$f3->set('APP_VERSION', '1.1.0');
 
 // Configuração de Segurança e Debug
 $f3->set('DEBUG', 3);
@@ -38,6 +38,7 @@ $f3->route('POST /api/send', function($f3) {
     $method = strtoupper($input['method'] ?? 'GET');
     $headers = $input['headers'] ?? [];
     $body = $input['body'] ?? '';
+    $verifySSL = $input['verify_ssl'] ?? true;
 
     if (!$url) {
         echo json_encode(['error' => 'Invalid URL']);
@@ -67,7 +68,16 @@ $f3->route('POST /api/send', function($f3) {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
     }
 
-    // [NOVO] Esta opção é vital: pede ao cURL para guardar os headers do pedido
+    if ($verifySSL) {
+        // Modo Seguro (Default)
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    } else {
+        // Modo "Perigoso" (Para Localhost/Self-Signed)
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    }
+
     curl_setopt($ch, CURLINFO_HEADER_OUT, true);
 
     // Se publicar na web, aqui adicionaria verificação para bloquear 

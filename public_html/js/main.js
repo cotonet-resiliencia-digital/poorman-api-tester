@@ -176,6 +176,7 @@ async function saveRequest() {
         headers: getKVData('headers-container'),
         params: getKVData('params-container'),
         bodyRaw: document.getElementById('request-body-raw').value,
+        verifySSL: document.getElementById('verify-ssl').checked,
         savedAt: new Date().toISOString()
     };
 
@@ -243,6 +244,9 @@ function restoreRequest(index) {
     document.getElementById('method').value = item.method;
     document.getElementById('request-body-raw').value = item.bodyRaw || '';
 
+    const shouldVerify = (item.verifySSL !== undefined) ? item.verifySSL : true;
+    document.getElementById('verify-ssl').checked = shouldVerify;
+    
     // Restaurar Headers
     const headerContainer = document.getElementById('headers-container');
     headerContainer.innerHTML = ''; 
@@ -290,11 +294,14 @@ async function sendRequest() {
             }
         }
 
+        const verifySSL = document.getElementById('verify-ssl').checked;
+
         const payload = {
             url: urlObj.toString(),
             method: method,
             headers: headers,
             body: bodyContent,
+            verify_ssl: verifySSL,
             csrf: CSRF_TOKEN
         };
 

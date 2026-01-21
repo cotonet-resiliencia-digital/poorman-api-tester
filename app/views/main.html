@@ -13,14 +13,14 @@
             </span>
             Poorman - API Tester</h3>
 
-        <div style="flex: 1; overflow-y: auto; min-height: 150px; border-bottom: 1px solid var(--border); margin-bottom: 15px; padding-bottom: 10px;">
+        <div class="collections bb">
             <h5 style="margin-top: 0; margin-bottom: 10px; color: #aaa;">Collections</h5>
             <div id="collections-container">
                 <p style="font-size: 0.8rem; color: #555; font-style: italic;">No saved requests.</p>
             </div>
         </div>
 
-        <div class="input-group">
+        <div class="input-group bb">
             <h5>Request Headers</h5>
             <label>Global Headers <button type="button" class="btn-small" onclick="addHeader()">+</button></label>
             <div id="headers-container">
@@ -31,6 +31,16 @@
                 </div>
             </div>
             <small style="color:#666; font-size:0.7rem">Ex: Authorization Tokens</small>
+        </div>
+
+        <div class="input-group bb mt-2 mb-4">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="verify-ssl" checked style="width: auto; margin-right: 10px;">
+                <span style="font-size: 0.9rem;">Verify SSL Certificates</span>
+            </label>
+            <small style="color: #666; font-size: 0.7rem; display: block; margin-top: 5px; margin-left: 24px;">
+                Disable this if using self-signed certs (localhost).
+            </small>
         </div>
 
         <footer class="app-footer">
